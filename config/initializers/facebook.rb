@@ -1,1 +1,2 @@
-FACEBOOK_CONFIG = YAML.load_file("#{::Rails.root}/config/facebook.yml")[::Rails.env]
+FACEBOOK_CONFIG['app_id'] = ENV["FACEBOOK_APP_ID"]
+FACEBOOK_CONFIG['secret'] = ENV["FACEBOOK_SECRET"]
