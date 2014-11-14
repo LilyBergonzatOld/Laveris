@@ -3,6 +3,7 @@ development:
   database: laveetris_dev
   pool: 5
   timeout: 5000
+
 test:
   adapter: postgresql
   database: laveetris_test
