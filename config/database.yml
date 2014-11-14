@@ -1,8 +1,7 @@
 development:
-  adapter: postgresql
-  database: laveetris_dev
+  adapter: sqlite3
   pool: 5
-  timeout: 5000
+  timeout: 500
 
 test:
   adapter: postgresql
