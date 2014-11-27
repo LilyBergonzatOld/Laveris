@@ -1,4 +1,5 @@
 development:
+  database: laveris_dev
   adapter: sqlite3
   pool: 5
   timeout: 500

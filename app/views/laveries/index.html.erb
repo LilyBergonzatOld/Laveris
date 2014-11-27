@@ -1,0 +1,39 @@
+<h1>Listing laveries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Laverie</th>
+      <th>Name</th>
+      <th>Nbmaxpers</th>
+      <th>Numtel</th>
+      <th>Numrue</th>
+      <th>Librue</th>
+      <th>Cdpost</th>
+      <th>Libville</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @laveries.each do |lavery| %>
+      <tr>
+        <td><%= lavery.laverie_id %></td>
+        <td><%= lavery.name %></td>
+        <td><%= lavery.nbmaxpers %></td>
+        <td><%= lavery.numtel %></td>
+        <td><%= lavery.numrue %></td>
+        <td><%= lavery.librue %></td>
+        <td><%= lavery.cdpost %></td>
+        <td><%= lavery.libville %></td>
+        <td><%= link_to 'Show', lavery %></td>
+        <td><%= link_to 'Edit', edit_lavery_path(lavery) %></td>
+        <td><%= link_to 'Destroy', lavery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Laverie', new_lavery_path %>

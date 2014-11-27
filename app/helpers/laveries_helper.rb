@@ -1,0 +1,2 @@
+module LaveriesHelper
+end
