@@ -5,12 +5,12 @@ development:
 
 test:
   adapter: postgresql
-  database: laveris_test
+  database: laveetris_test
   pool: 5
   timeout: 5000
 
 production:
   adapter: postgresql
-  database: laveris
+  database: laveetris
   pool: 5
   timeout: 5000
