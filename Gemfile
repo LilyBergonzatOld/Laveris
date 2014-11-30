@@ -42,3 +42,5 @@ gem 'spring',        group: :development
 gem 'omniauth-facebook' # Facebook authentication 
 gem "koala", "~> 1.10.0rc" # Facebook API 
 gem 'therubyracer', :platform => :ruby
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
