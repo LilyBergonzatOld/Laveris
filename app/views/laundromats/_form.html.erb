@@ -1,0 +1,45 @@
+<%= form_for(@laundromat) do |f| %>
+  <% if @laundromat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@laundromat.errors.count, "error") %> prohibited this laundromat from being saved:</h2>
+
+      <ul>
+      <% @laundromat.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :capacity %><br>
+    <%= f.number_field :capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :nbstreet %><br>
+    <%= f.text_field :nbstreet %>
+  </div>
+  <div class="field">
+    <%= f.label :libstreet %><br>
+    <%= f.text_field :libstreet %>
+  </div>
+  <div class="field">
+    <%= f.label :zipcode %><br>
+    <%= f.text_field :zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :libcity %><br>
+    <%= f.text_field :libcity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

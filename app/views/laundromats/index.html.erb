@@ -1,0 +1,37 @@
+<h1>Listing laundromats</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Capacity</th>
+      <th>Phone</th>
+      <th>Nbstreet</th>
+      <th>Libstreet</th>
+      <th>Zipcode</th>
+      <th>Libcity</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @laundromats.each do |laundromat| %>
+      <tr>
+        <td><%= laundromat.name %></td>
+        <td><%= laundromat.capacity %></td>
+        <td><%= laundromat.phone %></td>
+        <td><%= laundromat.nbstreet %></td>
+        <td><%= laundromat.libstreet %></td>
+        <td><%= laundromat.zipcode %></td>
+        <td><%= laundromat.libcity %></td>
+        <td><%= link_to 'Show', laundromat %></td>
+        <td><%= link_to 'Edit', edit_laundromat_path(laundromat) %></td>
+        <td><%= link_to 'Destroy', laundromat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Laundromat', new_laundromat_path %>

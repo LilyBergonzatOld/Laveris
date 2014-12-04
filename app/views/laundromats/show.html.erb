@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @laundromat.name %>
+</p>
+
+<p>
+  <strong>Capacity:</strong>
+  <%= @laundromat.capacity %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @laundromat.phone %>
+</p>
+
+<p>
+  <strong>Nbstreet:</strong>
+  <%= @laundromat.nbstreet %>
+</p>
+
+<p>
+  <strong>Libstreet:</strong>
+  <%= @laundromat.libstreet %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @laundromat.zipcode %>
+</p>
+
+<p>
+  <strong>Libcity:</strong>
+  <%= @laundromat.libcity %>
+</p>
+
+<%= link_to 'Edit', edit_laundromat_path(@laundromat) %> |
+<%= link_to 'Back', laundromats_path %>

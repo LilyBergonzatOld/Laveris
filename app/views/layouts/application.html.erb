@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Laveris</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <title>Laveris</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="http://wenzhixin.net.cn/p/bootstrap-table/src/bootstrap-table.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
+    <header>
+        <h1>
+            Lave&Ris
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <%= link_to 'Accueil', root_path %>
+                </li>
+                <li>
+                    <%= link_to 'Liste des utilisateurs', users_path %>
+                </li>
+                <li>
+                    <% if session[:id] %>
+                        <%= link_to 'Se déconnecter (' + session[:name] + ' ' + session[:surname] + ')', logout_path %>
+                    <% else %>
+                        <%= link_to 'Se connecter avec facebook', auth_provider_path %>
+                    <% end %>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <% if flash[:notice] %>
+            <p class="alert alert-success">
+                <%= flash[:notice] %>
+            </p>
+        <% end %>
 
-<%= yield %>
-
+        <%= yield %>
+    </div>
 </body>
 </html>
