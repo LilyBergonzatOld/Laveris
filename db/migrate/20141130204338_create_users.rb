@@ -10,5 +10,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index "users", ["id"], name: "index_users_on_id", unique: true, using: :btree
   end
 end

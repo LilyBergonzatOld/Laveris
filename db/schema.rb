@@ -36,7 +36,8 @@ ActiveRecord::Schema.define(version: 20141203093452) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", id: false, force: true do |t|
+    t.integer  "id",         limit: 8
     t.string   "name"
     t.string   "surname"
     t.string   "phone"
@@ -45,5 +46,7 @@ ActiveRecord::Schema.define(version: 20141203093452) do
     t.datetime "updated_at"
     t.string   "avatar"
   end
+
+  add_index "users", ["id"], name: "index_users_on_id", unique: true
 
 end
