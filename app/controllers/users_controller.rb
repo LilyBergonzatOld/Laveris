@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       @user.save
     end
 
-    redirect_to @user, notice: 'Bienvenue ' + @facebook_user['name']
+    redirect_to root_path, notice: 'Bienvenue ' + @facebook_user['name']
   end
 
   # GET /logout

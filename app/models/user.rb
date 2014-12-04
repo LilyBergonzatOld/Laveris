@@ -5,5 +5,9 @@ class User < ActiveRecord::Base
     facebook = Koala::Facebook::API.new(access_token)
     facebook.get_object("me?fields=name,picture")
   end
+
+  def fullname
+    self.name+' '+self.surname
+  end
   
 end

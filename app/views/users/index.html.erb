@@ -1,11 +1,5 @@
 <h1>Listing users</h1>
 
-<% if flash[:notice] %>
-    <p class="alert alert-success">
-        <%= flash[:notice] %>
-    </p>
-<% end %>
-
 <table class="table table-hover">
   <thead>
     <tr>
@@ -31,11 +25,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<% if session[:id] %>
-    <%= link_to 'Se déconnecter', logout_path %>
-<% else %>
-    <%= link_to 'Se connecter avec facebook', '/auth/facebook' %>
-<% end %>

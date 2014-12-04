@@ -18,7 +18,35 @@
     <%= csrf_meta_tags %>
 </head>
 <body>
+    <header>
+        <h1>
+            Lave&Ris
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <%= link_to 'Accueil', root_path %>
+                </li>
+                <li>
+                    <%= link_to 'Liste des utilisateurs', users_path %>
+                </li>
+                <li>
+                    <% if session[:id] %>
+                        <%= link_to 'Se déconnecter (' + session[:name] + ' ' + session[:surname] + ')', logout_path %>
+                    <% else %>
+                        <%= link_to 'Se connecter avec facebook', auth_provider_path %>
+                    <% end %>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
+        <% if flash[:notice] %>
+            <p class="alert alert-success">
+                <%= flash[:notice] %>
+            </p>
+        <% end %>
+
         <%= yield %>
     </div>
 </body>
