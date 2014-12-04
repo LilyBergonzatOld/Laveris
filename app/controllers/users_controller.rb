@@ -8,7 +8,30 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.koala(request.env['omniauth.auth']['credentials'])
+    @facebook_user = User.koala(request.env['omniauth.auth']['credentials'])
+    @full_name = @facebook_user['name'].split(/ /)
+
+    @user = User.new
+    @user[:id] = @facebook_user['id']
+    @user[:name] = @full_name[0]
+    @user[:surname] = @full_name[1]
+    @user[:avatar] = @facebook_user['picture']['data']['url'].to_s
+
+    session[:id] = @user[:id]
+    session[:name] = @user[:name]
+    session[:surname] = @user[:surname]
+
+    unless User.exists?(@user[:id])
+      @user.save
+    end
+
+    redirect_to @user, notice: 'Bienvenue ' + @facebook_user['name']
+  end
+
+  # GET /logout
+  def logout
+    reset_session
+    redirect_to root_path, notice: 'Vous avez bien été déconnecté. À bientôt !'
   end
 
   # GET /users/1

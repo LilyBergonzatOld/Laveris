@@ -1,2 +1,5 @@
-<%= image_tag @user['picture']['data']['url'].to_s %>
-<%= @user['name'] %>
+<p>
+    Bienvenue <%= @user[:name] %>, vous êtes connecté !<br />
+    Vous allez être redirigé...<br />
+    <a href="/">Cliquez ici si la redirection ne fonctionne pas.</a>
+</p>
