@@ -44,3 +44,6 @@ gem "koala", "~> 1.10.0rc" # Facebook API
 gem 'therubyracer', :platform => :ruby
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
+gem 'rails_serve_static_assets'
+gem 'rails_stdout_logging'
