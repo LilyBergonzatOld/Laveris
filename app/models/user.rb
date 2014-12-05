@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  self.primay_key = 'id'
 
   def self.koala(auth)
     access_token = auth['token']
