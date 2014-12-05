@@ -1,39 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nom : </strong>
   <%= @laundromat.name %>
 </p>
 
 <p>
-  <strong>Capacity:</strong>
+  <strong>Capacité : </strong>
   <%= @laundromat.capacity %>
 </p>
 
 <p>
-  <strong>Phone:</strong>
+  <strong>N° de téléphone : </strong>
   <%= @laundromat.phone %>
 </p>
 
 <p>
-  <strong>Nbstreet:</strong>
+  <strong>N° de rue : </strong>
   <%= @laundromat.nbstreet %>
 </p>
 
 <p>
-  <strong>Libstreet:</strong>
+  <strong>Rue : </strong>
   <%= @laundromat.libstreet %>
 </p>
 
 <p>
-  <strong>Zipcode:</strong>
+  <strong>Code postal : </strong>
   <%= @laundromat.zipcode %>
 </p>
 
 <p>
-  <strong>Libcity:</strong>
+  <strong>Ville : </strong>
   <%= @laundromat.libcity %>
 </p>
 
-<%= link_to 'Edit', edit_laundromat_path(@laundromat) %> |
-<%= link_to 'Back', laundromats_path %>
+<%= link_to 'Retour', laundromats_path, class: 'btn btn-default' %>
+<%= link_to 'Modifier', edit_laundromat_path(@laundromat), class: 'btn btn-default' %>

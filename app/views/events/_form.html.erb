@@ -17,10 +17,10 @@
   </div>
   <div class="field form-group">
     <%= f.label :laundromat_id %><br>
-    <%= f.select :laundromat_id, @laundromats.collect {|i| [i.name, i.id] }, {include_blank: 'Select something'} %>
+    <%= f.select :laundromat_id, @laundromats.collect {|i| [i.name, i.id] }, {include_blank: '--'} %>
   </div>
   <%= f.hidden_field :user_id, :value => session[:id] %>
   <div class="actions">
-      <%= link_to 'Back', events_path, class: 'btn btn-default' %><%= f.submit 'Enregistrer', class: 'btn btn-default' %>
+      <%= link_to 'Retour', root_path, class: 'btn btn-default' %><%= f.submit 'Enregistrer', class: 'btn btn-default' %>
   </div>
 <% end %>

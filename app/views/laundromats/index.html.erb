@@ -1,15 +1,15 @@
-<h1>Listing laundromats</h1>
+<h1>Liste des laveries</h1>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Capacity</th>
-      <th>Phone</th>
-      <th>Nbstreet</th>
-      <th>Libstreet</th>
-      <th>Zipcode</th>
-      <th>Libcity</th>
+      <th>Nom</th>
+      <th>Capacité</th>
+      <th>N° de téléphone</th>
+      <th>N° de rue</th>
+      <th>Rue</th>
+      <th>Code postal</th>
+      <th>Ville</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,9 +24,9 @@
         <td><%= laundromat.libstreet %></td>
         <td><%= laundromat.zipcode %></td>
         <td><%= laundromat.libcity %></td>
-        <td><%= link_to 'Show', laundromat %></td>
-        <td><%= link_to 'Edit', edit_laundromat_path(laundromat) %></td>
-        <td><%= link_to 'Destroy', laundromat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Voir', laundromat %></td>
+        <td><%= link_to 'Modifier', edit_laundromat_path(laundromat) %></td>
+        <td><%= link_to 'Supprimer', laundromat, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,5 +35,5 @@
 <br>
 
 <% if session[:id] %>
-    <%= link_to 'New Laundromat', new_laundromat_path %>
+    <%= link_to 'Ajouter une laverie', new_laundromat_path %>
 <% end %>

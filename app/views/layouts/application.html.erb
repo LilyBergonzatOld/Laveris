@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laveris</title>
+    <title>Lave&Ris</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -47,6 +47,11 @@
         <% if flash[:notice] %>
             <p class="alert alert-success">
                 <%= flash[:notice] %>
+            </p>
+        <% end %>
+        <% if flash[:error] %>
+            <p class="alert alert-error">
+                <%= flash[:error] %>
             </p>
         <% end %>
 

@@ -1,11 +1,12 @@
-<h1>Listing users</h1>
+<h1>Liste des utilisateurs</h1>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Phone</th>
+      <th>Avatar</th>
+      <th>Prénom</th>
+      <th>Nom</th>
+      <th>N° de téléphone</th>
       <th>Location</th>
       <th colspan="3"></th>
     </tr>
@@ -14,6 +15,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= image_tag user.avatar %></td>
         <td><%= user.name %></td>
         <td><%= user.surname %></td>
         <td><%= user.phone %></td>

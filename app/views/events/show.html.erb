@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Date:</strong>
+  <strong>Quand ? </strong>
   <%= @event.date %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @event.user %>
+  <strong>Qui ? </strong>
+  <%= event.user.read_attribute(:name) + ' ' + event.user.read_attribute(:surname) %>
 </p>
 
 <p>
-  <strong>Laundromat:</strong>
-  <%= @event.laundromat %>
+  <strong>Où ? </strong>
+  <%= @event.laundromat.read_attribute(:name) %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Retour', events_path, class: 'btn btn-default' %>
+<%= link_to 'Modifier', edit_event_path(@event), class: 'btn btn-default' %>
