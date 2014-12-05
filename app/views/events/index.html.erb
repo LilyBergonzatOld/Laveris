@@ -1,6 +1,6 @@
 <h1>Listing events</h1>
 
-<% if @events.size > 1 %>
+<% if @events.any? %>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -15,8 +15,20 @@
         <% @events.each do |event| %>
           <tr>
             <td><%= event.date %></td>
-            <td><%= event.user.read_attribute(:name) + ' ' + event.user.read_attribute(:surname) %></td>
-            <td><%= event.laundromat.read_attribute(:name) %></td>
+            <td>
+                <% if event.user %>
+                    <%= event.user.read_attribute(:name) + ' ' + event.user.read_attribute(:surname) %>
+                <% else %>
+                    Aucun utilisateur sélectionné
+                <% end %>
+            </td>
+            <td>
+                <% if event.laundromat %>
+                    <%= event.laundromat.read_attribute(:name) %>
+                <% else %>
+                    Aucune laverie sélectionnée
+                <% end %>
+            </td>
             <td><%= link_to 'Show', event %></td>
             <td><%= link_to 'Edit', edit_event_path(event) %></td>
             <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

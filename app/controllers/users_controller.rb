@@ -11,19 +11,21 @@ class UsersController < ApplicationController
     @facebook_user = User.koala(request.env['omniauth.auth']['credentials'])
     @full_name = @facebook_user['name'].split(/ /)
 
-    @user = User.new
-    @user[:id] = @facebook_user['id']
-    @user[:name] = @full_name[0]
-    @user[:surname] = @full_name[1]
-    @user[:avatar] = @facebook_user['picture']['data']['url'].to_s
-
-    session[:id] = @user[:id]
-    session[:name] = @user[:name]
-    session[:surname] = @user[:surname]
-
-    unless User.exists?(@user[:id])
+    if User.exists?(:fbid => @facebook_user['id'])
+      @user = User.find_by_fbid(@facebook_user['id'])
+    else
+      @user = User.new
+      @user[:fbid] = @facebook_user['id']
+      @user[:name] = @full_name[0]
+      @user[:surname] = @full_name[1]
+      @user[:avatar] = @facebook_user['picture']['data']['url'].to_s
       @user.save
     end
+
+    session[:id] = @user[:id]
+    session[:fbid] = @user[:fbid]
+    session[:name] = @user[:name]
+    session[:surname] = @user[:surname]
 
     redirect_to root_path, notice: 'Bienvenue ' + @facebook_user['name']
   end

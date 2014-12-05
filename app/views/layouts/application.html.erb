@@ -31,6 +31,9 @@
                     <%= link_to 'Liste des utilisateurs', users_path %>
                 </li>
                 <li>
+                    <%= link_to 'Liste des laveries', laundromats_path %>
+                </li>
+                <li>
                     <% if session[:id] %>
                         <%= link_to 'Se déconnecter (' + session[:name] + ' ' + session[:surname] + ')', logout_path %>
                     <% else %>

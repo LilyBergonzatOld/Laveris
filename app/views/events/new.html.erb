@@ -1,17 +1,3 @@
 <h1>New event</h1>
 
-<%= form_tag('/events') do %>
-    <div class="form-group">
-        <%= label_tag(:date, "Date de l'événement :") %><br />
-        <%= datetime_local_field(:event, :date) %>
-    </div>
-
-    <div class="form-group">
-        <%= label_tag('event[laundromat_id]', "Laverie dans laquelle l'événement se produira :") %><br />
-        <%= select_tag('event[laundromat_id]', options_from_collection_for_select(@laundromats, 'id', 'name', params[:state_id].to_i)) %>
-    </div>
-
-    <%= hidden_field_tag('event[user_id]', session[:id]) %>
-
-    <%= link_to 'Back', events_path, class: 'btn btn-default' %><%= submit_tag('Enregistrer', class: 'btn btn-default') %>
-<% end %>
+<%= render 'form' %>

@@ -34,4 +34,6 @@
 
 <br>
 
-<%= link_to 'New Laundromat', new_laundromat_path %>
+<% if session[:id] %>
+    <%= link_to 'New Laundromat', new_laundromat_path %>
+<% end %>
