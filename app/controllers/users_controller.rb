@@ -9,15 +9,19 @@ class UsersController < ApplicationController
 
   def login
     @facebook_user = User.koala(request.env['omniauth.auth']['credentials'])
-    @full_name = @facebook_user['name'].split(/ /)
+    @full_name_array = @facebook_user['name'].split(/ /)
+    @full_name = @facebook_user['name']
+    @name = @full_name_array[0]
+    @full_name_array.shift
+    @surname = @full_name_array.join(' ')
 
     if User.exists?(:fbid => @facebook_user['id'])
       @user = User.find_by_fbid(@facebook_user['id'])
     else
       @user = User.new
       @user[:fbid] = @facebook_user['id']
-      @user[:name] = @full_name[0]
-      @user[:surname] = @full_name[1]
+      @user[:name] = @name
+      @user[:surname] = @surname
       @user[:avatar] = @facebook_user['picture']['data']['url'].to_s
       @user.save
     end
@@ -57,7 +61,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'L\'utilisateur a été créé avec succès' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -71,7 +75,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'L\'utilisateur a été modifié avec succès' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -85,7 +89,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: 'L\'utilisateur a été supprimé avec succès' }
       format.json { head :no_content }
     end
   end

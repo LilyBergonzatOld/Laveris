@@ -28,7 +28,7 @@ class LaundromatsController < ApplicationController
 
     respond_to do |format|
       if @laundromat.save
-        format.html { redirect_to @laundromat, notice: 'Laundromat was successfully created.' }
+        format.html { redirect_to @laundromat, notice: 'La laverie a été créée avec succès' }
         format.json { render :show, status: :created, location: @laundromat }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class LaundromatsController < ApplicationController
   def update
     respond_to do |format|
       if @laundromat.update(laundromat_params)
-        format.html { redirect_to @laundromat, notice: 'Laundromat was successfully updated.' }
+        format.html { redirect_to @laundromat, notice: 'La laverie a été modifiée avec succès' }
         format.json { render :show, status: :ok, location: @laundromat }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class LaundromatsController < ApplicationController
   def destroy
     @laundromat.destroy
     respond_to do |format|
-      format.html { redirect_to laundromats_url, notice: 'Laundromat was successfully destroyed.' }
+      format.html { redirect_to laundromats_url, notice: 'La laverie a été supprimée avec succès' }
       format.json { head :no_content }
     end
   end
