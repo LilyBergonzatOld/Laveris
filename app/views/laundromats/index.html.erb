@@ -51,11 +51,22 @@
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyD6HPIetuW0ADd5fCi9Fxv3f6QgB7nwjcM&sensor=FALSE", 'data-turbolinks-track' => true %>
 <script type="text/javascript">
-    var map, markers, geocoder, nbMarkers, indexMarker, centerView, distance;
+    var map, markers, geocoder, nbMarkers, indexMarker, centerView, distance, markerImages;
     function initialize(position) {
         centerView = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
         geocoder = new google.maps.Geocoder();
-        markers = new Array();
+        markers = [];
+        markerImages = [
+            '<%= asset_path('markers/marker0.png') %>',
+            '<%= asset_path('markers/marker1.png') %>',
+            '<%= asset_path('markers/marker2.png') %>',
+            '<%= asset_path('markers/marker3.png') %>',
+            '<%= asset_path('markers/marker4.png') %>',
+            '<%= asset_path('markers/marker5.png') %>',
+            '<%= asset_path('markers/marker6.png') %>',
+            '<%= asset_path('markers/marker7.png') %>',
+            '<%= asset_path('markers/marker8.png') %>'
+        ];
         nbMarkers = 9;
         distance = 0;
         indexMarker = 0;
@@ -83,7 +94,7 @@
                         map:map,
                         draggable:false,
                         animation: google.maps.Animation.DROP,
-                        icon: '<%= asset_path 'marker1.png' %>'.replace('marker1', 'marker' + (indexMarker - (nbMarkers * Math.floor(indexMarker / nbMarkers)))),
+                        icon: markerImages[(indexMarker - (nbMarkers * Math.floor(indexMarker / nbMarkers)))],
                         position: loc
                     }),
                     localisation: loc,
