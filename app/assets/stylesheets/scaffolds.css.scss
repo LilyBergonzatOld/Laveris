@@ -135,7 +135,7 @@ h2 {
     left: 8px;
 }
 
-.container {
+body:not(.index) .container {
     padding-top: 80px;
     padding-bottom: 90px;
     box-sizing: border-box;
