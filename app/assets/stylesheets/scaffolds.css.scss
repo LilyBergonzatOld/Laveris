@@ -3,6 +3,10 @@ body {
     margin: 0;
 }
 
+img {
+    max-width: 100%;
+}
+
 nav {
     display:inline-block;
     background-color: #093F8C;
@@ -96,6 +100,8 @@ h1:not(.index) {
     height: 39px;
     width: 100%;
     position: fixed;
+    z-index: 1;
+    border-bottom: 3px solid white;
     left: 0;
     top: 38px;
 }
@@ -116,23 +122,25 @@ h2 {
     font-size: 22px;
     color: white;
     text-transform: uppercase;
-    margin-top: 8px;
-    margin-left: 21px;
+    margin: 8px auto 8px 21px;
 }
 
 .titre-laveries {
     background-color: #009EE3;
-    height: 39px;
     width: 100%;
     position: relative;
 }
 
-.etoile {
+#etoiles {
     display: inline-block;
+    vertical-align: top;
+    width: 150px;
+    font-size: 0;
+    margin-top: 4px;
+}
+
+.etoile {
     width: 28px;
-    position: relative;
-    top: 5px;
-    left: 8px;
 }
 
 body:not(.index) .container {

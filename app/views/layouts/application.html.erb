@@ -20,17 +20,36 @@
 <body <% if current_page?(root_url) %>class="index"<% end %> data-no-turbolink>
     <header>
         <% if current_page?(root_url) %>
-            <%= image_tag("fil-linge.png", :class => "fil index", :alt => "chaussettes", :title => "chaussettes") %>
+            <%= image_tag("fil-chaussettes.png", :class => "fil index", :alt => "chaussettes", :title => "chaussettes") %>
             <h1 class="logo index">
                 <%= image_tag("logo.png",:title => "logo") %>
             </h1>
         <% else %>
             <%= yield(:back_arrow) %>
             <nav>
-                <%= link_to image_tag("bouton-laveries.png", :alt => ""), laundromats_path %>
-                <%= link_to image_tag("bouton-evenement.png", :alt => ""), events_path %>
-                <%= link_to image_tag("bouton-profil.png", :alt => ""), profile_path %>
-                <%= link_to image_tag("bouton-parametres.png", :alt => ""), parameters_path %>
+                <% if controller_name == "laundromats" %>
+                    <%= link_to image_tag("bouton-laveries-survol.png", :alt => ""), laundromats_path %>
+                <% else %>
+                    <%= link_to image_tag("bouton-laveries.png", :alt => ""), laundromats_path %>
+                <% end %>
+
+                <% if controller_name == "events" %>
+                    <%= link_to image_tag("bouton-evenement-survol.png", :alt => ""), events_path %>
+                <% else %>
+                    <%= link_to image_tag("bouton-evenement.png", :alt => ""), events_path %>
+                <% end %>
+
+                <% if controller_name == "users" && action_name == "profile" %>
+                    <%= link_to image_tag("bouton-profil-survol.png", :alt => ""), profile_path %>
+                <% else %>
+                    <%= link_to image_tag("bouton-profil.png", :alt => ""), profile_path %>
+                <% end %>
+
+                <% if controller_name == "users" && action_name == "parameters" %>
+                    <%= link_to image_tag("bouton-parametres-survol.png", :alt => ""), parameters_path %>
+                <% else %>
+                    <%= link_to image_tag("bouton-parametres.png", :alt => ""), parameters_path %>
+                <% end %>
             </nav>
             <%= image_tag("logo-bleu.png", :class => "logo", :alt => "logo", :title => "logo") %>
         <% end %>

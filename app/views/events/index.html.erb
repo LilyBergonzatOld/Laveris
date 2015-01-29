@@ -2,48 +2,47 @@
 <% himage image_tag("evenements.png", :class => "laveries", :alt => "laveries", :title => "laveries") %>
 
 <% if @events.any? %>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Quand ?</th>
-          <th>Qui ?</th>
-          <th>Où ?</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @events.each do |event| %>
-          <tr>
-            <td><%= event.date %></td>
-            <td>
-                <% if event.user %>
-                    <%= event.user.read_attribute(:name) + ' ' + event.user.read_attribute(:surname) %>
-                <% else %>
-                    Aucun utilisateur sélectionné
-                <% end %>
-            </td>
-            <td>
-                <% if event.laundromat %>
-                    <%= event.laundromat.read_attribute(:name) %>
-                <% else %>
-                    Aucune laverie sélectionnée
-                <% end %>
-            </td>
-            <td><%= link_to 'Voir', event %></td>
-            <td><%= link_to 'Modifier', edit_event_path(event) %></td>
-            <td><%= link_to 'Supprimer', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <% @events.each do |event| %>
+        <table class="event">
+            <tr>
+                <th>
+                    <%= link_to event.name, event %>
+                </th>
+                <th>
+                    <% if event.user %>
+                        <%= image_tag(event.user.read_attribute(:avatar)) %>
+                    <% end %>
+                </th>
+                <th>
+                    <%= image_tag("check-gris.png") %>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <% if event.laundromat %>
+                        <%= event.laundromat.read_attribute(:name) %>
+                    <% else %>
+                        Aucune laverie sélectionnée
+                    <% end %>
+                </td>
+                <td>
+                    <%= event.date.strftime("%d/%m/%Y") %>
+                </td>
+                <td>
+                    <%= event.date.strftime("%HH%M") %>
+                </td>
+            </tr>
+        </table>
+    <% end %>
 <% else %>
     <p>
         Aucun événement pour le moment.
     </p>
 <% end %>
-<br />
+<br/>
 
 <% if session[:id] %>
-    <%= link_to 'Créer un nouvel événement', new_event_path %>
+    <p class="creerEvenement">
+        <%= link_to image_tag("creer-un-evenement.png"), new_event_path %>
+    </p>
 <% end %>

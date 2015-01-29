@@ -1,16 +1,19 @@
 <% title "Laveries" %>
 <% himage image_tag("laveries.png", :class => "laveries", :alt => "laveries", :title => "laveries") %>
 
-<%= image_tag("fil-linge.png", :class => "fil", :alt => "") %>
-
 <div id="map-canvas"></div>
 <div class="titre-laveries">
     <section>
         <h2 id="laundromatName">
 
         </h2>
-        <%= image_tag("etoile.png", :class => "etoile", :alt => "*", :title => "etoile") %>
-        <%= image_tag("etoile.png", :class => "etoile", :alt => "*", :title => "etoile") %>
+        <div id="etoiles">
+            <%= image_tag("etoile.png", :class => "etoile", :alt => "*", :title => "etoile") %>
+            <%= image_tag("etoile.png", :class => "etoile", :alt => "*", :title => "etoile") %>
+            <%= image_tag("etoile-vide.png", :class => "etoile", :alt => "-", :title => "etoile") %>
+            <%= image_tag("etoile-vide.png", :class => "etoile", :alt => "-", :title => "etoile") %>
+            <%= image_tag("etoile-vide.png", :class => "etoile", :alt => "-", :title => "etoile") %>
+        </div>
     </section>
 </div>
 <section>
@@ -140,6 +143,7 @@
             var capacity = document.getElementById('laundromatCapacity');
 
             name.innerHTML = markers[id].name;
+            name.title = markers[id].name;
             distance.innerHTML = markers[id].distance + ' mètres';
             address.innerHTML = markers[id].address;
             capacity.innerHTML = markers[id].capacity + ' personnes';
