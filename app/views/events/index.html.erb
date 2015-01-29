@@ -26,10 +26,18 @@
                     <% end %>
                 </td>
                 <td>
-                    <%= event.date.strftime("%d/%m/%Y") %>
+                    <% if event.date %>
+                        <%= event.date.strftime("%d/%m/%Y") %>
+                    <% else %>
+                        Pas de date définie
+                    <% end %>
                 </td>
                 <td>
-                    <%= event.date.strftime("%HH%M") %>
+                    <% if event.date %>
+                        <%= event.date.strftime("%HH%M") %>
+                    <% else %>
+                        Pas d'heure définie
+                    <% end %>
                 </td>
             </tr>
         </table>
