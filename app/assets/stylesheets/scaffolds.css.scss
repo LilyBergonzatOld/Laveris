@@ -81,7 +81,7 @@ body:not(.index) header {
     z-index:2;
 }
 
-h1 {
+h1:not(.index) {
     font-family:'Bebas Neue', Arial, sans-serif;
     display: inline-block;
     font-size:18px;
