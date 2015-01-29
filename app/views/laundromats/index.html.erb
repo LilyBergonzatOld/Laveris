@@ -1,39 +1,171 @@
-<h1>Liste des laveries</h1>
+<% title "Laveries" %>
+<% himage image_tag("laveries.png", :class => "laveries", :alt => "laveries", :title => "laveries") %>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Capacité</th>
-      <th>N° de téléphone</th>
-      <th>N° de rue</th>
-      <th>Rue</th>
-      <th>Code postal</th>
-      <th>Ville</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= image_tag("fil-linge.png", :class => "fil", :alt => "") %>
 
-  <tbody>
-    <% @laundromats.each do |laundromat| %>
-      <tr>
-        <td><%= laundromat.name %></td>
-        <td><%= laundromat.capacity %></td>
-        <td><%= laundromat.phone %></td>
-        <td><%= laundromat.nbstreet %></td>
-        <td><%= laundromat.libstreet %></td>
-        <td><%= laundromat.zipcode %></td>
-        <td><%= laundromat.libcity %></td>
-        <td><%= link_to 'Voir', laundromat %></td>
-        <td><%= link_to 'Modifier', edit_laundromat_path(laundromat) %></td>
-        <td><%= link_to 'Supprimer', laundromat, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="map-canvas"></div>
+<div class="titre-laveries">
+    <section>
+        <h2 id="laundromatName">
 
-<br>
+        </h2>
+        <%= image_tag("etoile.png", :class => "etoile", :alt => "*", :title => "etoile") %>
+        <%= image_tag("etoile.png", :class => "etoile", :alt => "*", :title => "etoile") %>
+    </section>
+</div>
+<section>
+    <ul>
+        <li>
+            <%= image_tag("distance.png", :class => "distance", :alt => "distance", :title => "distance") %>
+        </li>
+        <li>
+            <%= image_tag("adresse.png", :class => "adresse", :alt => "adresse", :title => "adresse") %>
+        </li>
+        <li>
+            <%= image_tag("capacite.png", :class => "capacite", :alt => "capacite", :title => "capacite") %>
+        </li>
+    </ul>
+    <ul class="laundromatFieldTitles">
+        <li>
+            Distance
+        </li>
+        <li>
+            Adresse
+        </li>
+        <li>
+            Capacité
+        </li>
+    </ul>
+    <ul class="laundromatFieldValues">
+        <li id="laundromatDistance">
+            316 mètres
+        </li>
+        <li id="laundromatAddress">
+            10 Rue Saint-James (Bordeaux)
+        </li>
+        <li id="laundromatCapacity">
+            25 personnes
+        </li>
+    </ul>
+</section>
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyD6HPIetuW0ADd5fCi9Fxv3f6QgB7nwjcM&sensor=FALSE", 'data-turbolinks-track' => true %>
+<script type="text/javascript">
+    var map, markers, geocoder, nbMarkers, indexMarker, centerView, distance;
+    function initialize(position) {
+        centerView = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        geocoder = new google.maps.Geocoder();
+        markers = new Array();
+        nbMarkers = 9;
+        distance = 0;
+        indexMarker = 0;
+
+        <% @laundromats.each do |laundromat| %>
+        codeAddress('<%= laundromat.name %>', '<%= laundromat.nbstreet + ' ' + laundromat.libstreet + ', ' + laundromat.zipcode + ' ' + laundromat.libcity %>', <%= laundromat.capacity %>);
+        <% end %>
+
+        var mapOptions = {
+            center: centerView,
+            zoom: 12
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    }
+
+    function codeAddress(name, address, capacity) {
+        console.log('Searching GPS datas for address ' + address + '...');
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var loc = results[0].geometry.location;
+                var dist = Math.ceil(getDistance(centerView, loc));
+
+                markers.push({
+                    marker: new google.maps.Marker({
+                        map:map,
+                        draggable:false,
+                        animation: google.maps.Animation.DROP,
+                        icon: '<%= asset_path 'marker1.png' %>'.replace('1', (indexMarker - (nbMarkers * Math.floor(indexMarker / nbMarkers))).toString()),
+                        position: loc
+                    }),
+                    localisation: loc,
+                    name: name,
+                    distance: dist,
+                    address: address.replace(', ', '<br />'),
+                    capacity: capacity
+                });
+
+                google.maps.event.addListener(markers[indexMarker].marker, 'click', function(e) {
+                    displayLaundromat(findMarkerByLoc(loc));
+                });
+
+                if(distance == 0 || (distance > 0 && dist < distance)) {
+                    distance = dist;
+                    displayLaundromat(indexMarker)
+                }
+
+                indexMarker++;
+
+                console.log('GPS data found : ' + results[0].geometry.location.D + ', ' + results[0].geometry.location.k);
+            } else {
+                console.error('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+    function findMarkerByLoc(loc) {
+        for(var i=0; i<markers.length; i++) {
+            if(markers[i].localisation == loc) {
+                return i;
+            }
+        }
+
+        return false;
+    }
+
+    function displayLaundromat(id) {
+        if(id < markers.length) {
+            var name = document.getElementById('laundromatName');
+            var distance = document.getElementById('laundromatDistance');
+            var address = document.getElementById('laundromatAddress');
+            var capacity = document.getElementById('laundromatCapacity');
+
+            name.innerHTML = markers[id].name;
+            distance.innerHTML = markers[id].distance + ' mètres';
+            address.innerHTML = markers[id].address;
+            capacity.innerHTML = markers[id].capacity + ' personnes';
+        } else {
+            console.error('Undefined index : markers[' + id + ']');
+        }
+    }
+
+    function rad(x) {
+        return x * Math.PI / 180;
+    }
+
+    function getDistance(p1, p2) {
+        var R = 6378137; // Earth’s mean radius in meter
+        var dLat = rad(p2.lat() - p1.lat());
+        var dLong = rad(p2.lng() - p1.lng());
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(rad(p1.lat())) * Math.cos(rad(p2.lat())) *
+                Math.sin(dLong / 2) * Math.sin(dLong / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+        return d; // returns the distance in meter
+    }
+
+    function addListener(obj, eventName, listener) {
+        if(obj.addEventListener) {
+            obj.addEventListener(eventName, listener, false);
+        } else {
+            obj.attachEvent("on" + eventName, listener);
+        }
+    }
+
+    addListener(document, 'DOMContentLoaded', function(event) {
+        navigator.geolocation.getCurrentPosition(initialize);
+    });
+</script>
 
 <% if session[:id] %>
-    <%= link_to 'Ajouter une laverie', new_laundromat_path %>
+    <%= link_to image_tag("creer.png", :id => "addLaundromat"), new_laundromat_path %>
 <% end %>

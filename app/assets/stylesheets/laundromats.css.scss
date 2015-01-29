@@ -1,3 +1,20 @@
 // Place all the styles related to the Laundromats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body, .container, #map-canvas {
+    height: 100%;
+    width: 100%;
+}
+
+#map-canvas {
+    height: 60%;
+}
+
+#addLaundromat {
+    position: absolute;
+    top: 135px;
+    right: 30px;
+    z-index: 3;
+    width: 50px;
+}

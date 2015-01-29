@@ -1,69 +1,191 @@
 body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+    font-family:'Interstate Regular*', Arial, sans-serif;
+    margin: 0;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+nav {
+    display:inline-block;
+    background-color: #093F8C;
+    position: fixed;
+    font-size: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0 5px;
+    text-align: justify;
+
+    &:after {
+        content: '';
+        width: 100%;
+        display: inline-block;
+    }
+
+    a {
+        display: inline-block;
+        vertical-align: top;
+        width: 25%;
+
+        &:not(:first-of-type) {
+            margin-left: -5px;
+        }
+    }
+
+    img {
+        width: 100%;
+    }
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+/*EN-TÊTE*/
+
+.logo {
+    width: 140px;
+    float: right;
+    margin-top: -33px;
+    margin-right: 16px;
+    z-index:2;
 }
 
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+.fleche {
+    width:9%;
+    margin-top:0;
+    float:left;
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+.retour {
+    text-decoration:none;
+    color:white;
+    position: relative;
+    top: 8px;
+    left: -7px;
+    font-size: 12px;
 }
 
-#notice {
-  color: green;
+.laveries {
+    display:inline-block;
+    text-decoration:none;
+    left: 27px;
+    position: fixed;
+    color:white;
+    font-size: 12px;
+    background-color: #009EE3;
+    width: 39px;
+    margin-top: 2px;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+body:not(.index) header {
+    background-color: #0F358E;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    z-index:2;
 }
 
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
-    text-align: left;
+h1 {
+    font-family:'Bebas Neue', Arial, sans-serif;
+    display: inline-block;
+    font-size:18px;
+    color:white;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-left: 75px;
+}
+
+.header2 {
+    background-color: #009EE3;
+    height: 39px;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 38px;
+}
+
+/*FIN EN-TÊTE*/
+
+.fil {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+/* BARRE NOM LAVERIES*/
+
+h2 {
+    display:inline-block;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    font-size: 22px;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 8px;
+    margin-left: 21px;
+}
+
+.titre-laveries {
+    background-color: #009EE3;
+    height: 39px;
+    width: 100%;
+    position: relative;
+}
+
+.etoile {
+    display: inline-block;
+    width: 28px;
+    position: relative;
+    top: 5px;
+    left: 8px;
+}
+
+.container {
+    padding-top: 80px;
+    padding-bottom: 90px;
+    box-sizing: border-box;
+}
+
+/*Données laveries*/
+
+.distance {
+    width:20px;
+}
+
+.adresse {
+    width:20px;
+}
+
+.capacite {
+    width:20px;
+}
+
+.laundromatFieldTitles, .laundromatFieldValues {
+    margin-top: 20px;
+    font-size:12px;
+    padding-left: 15px;
+
+    li {
+        margin-bottom: 15px;
+    }
+}
+
+.laundromatFieldTitles {
+    color: #009EE3;
     font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
+    padding-left: 0;
+}
+
+.laundromatFieldValues li:nth-of-type(2) {
+    margin-bottom: 1px;
+}
+
+h3 {
+    color: #009EE3;
+    font-size:12px;
+}
+
+section p {
+    font-size:12px;
+}
+
+section ul {
+    list-style-type: none;
+    display: inline-block;
+    vertical-align: top;
 }

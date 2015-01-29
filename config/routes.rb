@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   resources :laundromats
 
-  root to: 'events#index', via: :get
+  root to: 'users#index', via: :get
   get 'auth/facebook', as: 'auth_provider'
-  get 'auth/facebook/callback', to: 'users#login'
+  get 'auth/facebook/callback', to: 'users#callback'
   get 'logout', to: 'users#logout', as: :logout
+  get 'profile', to: 'users#profile', as: :profile
+  get 'parameters', to: 'users#parameters', as: :parameters
 end

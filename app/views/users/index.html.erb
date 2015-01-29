@@ -1,29 +1,3 @@
-<h1>Liste des utilisateurs</h1>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Avatar</th>
-      <th>Prénom</th>
-      <th>Nom</th>
-      <th>N° de téléphone</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= image_tag user.avatar %></td>
-        <td><%= user.name %></td>
-        <td><%= user.surname %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.location %></td>
-        <td><%= link_to 'Voir', user %></td>
-        <td><%= link_to 'Modifier', edit_user_path(user) %></td>
-        <td><%= link_to 'Supprimer', user, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<section class="index">
+    <%= link_to image_tag("facebook.png", :class => "facebook index", :alt => "facebook"), auth_provider_path %>
+</section>

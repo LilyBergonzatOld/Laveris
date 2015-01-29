@@ -1,3 +1,39 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body.index {
+    background: image-url("fond-eau.png") center;
+}
+
+/*INDEX*/
+
+.fil.index {
+    margin-top: 50px;
+    width: 100%;
+    position: static;
+    margin-left: 0;
+}
+
+.logo.index {
+    text-align: center;
+    margin-top: 50px;
+    width: auto;
+    float: none;
+    margin-right: auto;
+    z-index: 1;
+    display: block;
+}
+
+.facebook.index {
+    max-width: 90%;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.7);
+    }
+}
+
+section.index {
+    text-align: center;
+    margin-top: 50px;
+}

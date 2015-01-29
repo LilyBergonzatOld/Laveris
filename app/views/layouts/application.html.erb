@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lave&Ris</title>
+    <meta charset="utf-8" />
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <title>Lave & Ris - <%= yield(:title) %></title>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="http://wenzhixin.net.cn/p/bootstrap-table/src/bootstrap-table.css">
+    <meta name="description" content="Laveris - Application" />
+    <meta name="keywords" content="application, mobile, laverie, événement" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="icon" type="image/png" href="<%= image_url("favicon.png") %>" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
     <%= csrf_meta_tags %>
 </head>
-<body>
+<body <% if current_page?(root_url) %>class="index"<% end %> data-no-turbolink>
     <header>
-        <h1>
-            Lave&Ris
-        </h1>
-        <nav>
-            <ul>
-                <li>
-                    <%= link_to 'Accueil', root_path %>
-                </li>
-                <li>
-                    <%= link_to 'Liste des utilisateurs', users_path %>
-                </li>
-                <li>
-                    <%= link_to 'Liste des laveries', laundromats_path %>
-                </li>
-                <li>
-                    <% if session[:id] %>
-                        <%= link_to 'Se déconnecter (' + session[:name] + ' ' + session[:surname] + ')', logout_path %>
-                    <% else %>
-                        <%= link_to 'Se connecter avec facebook', auth_provider_path %>
-                    <% end %>
-                </li>
-            </ul>
-        </nav>
+        <% if current_page?(root_url) %>
+            <%= image_tag("fil-linge.png", :class => "fil index", :alt => "chaussettes", :title => "chaussettes") %>
+            <h1 class="logo index">
+                <%= image_tag("logo.png",:title => "logo") %>
+            </h1>
+        <% else %>
+            <%= yield(:back_arrow) %>
+            <nav>
+                <%= link_to image_tag("bouton-laveries.png", :alt => ""), laundromats_path %>
+                <%= link_to image_tag("bouton-evenement.png", :alt => ""), events_path %>
+                <%= link_to image_tag("bouton-profil.png", :alt => ""), profile_path %>
+                <%= link_to image_tag("bouton-parametres.png", :alt => ""), parameters_path %>
+            </nav>
+            <%= image_tag("logo-bleu.png", :class => "logo", :alt => "logo", :title => "logo") %>
+        <% end %>
     </header>
+    <% unless current_page?(root_url) %>
+    <div class="header2">
+        <section>
+            <h1><%= yield(:title) %></h1>
+            <%= yield(:himage) %>
+        </section>
+    </div>
+    <% end %>
     <div class="container">
         <% if flash[:notice] %>
             <p class="alert alert-success">

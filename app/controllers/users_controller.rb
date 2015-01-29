@@ -4,7 +4,14 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+  end
+
+  # GET /parameters
+  def parameters
+  end
+
+  def callback
+    redirect_to laundromats_path
   end
 
   def login
@@ -43,6 +50,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+  end
+
+  # GET /profile
+  def profile
+    if defined?session[:id]
+      @user = User.find(session[:id])
+    else
+      redirect_to root_path, notice: 'Vous n\'êtes pas connecté'
+    end
   end
 
   # GET /users/new
