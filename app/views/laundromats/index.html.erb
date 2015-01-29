@@ -83,7 +83,7 @@
                         map:map,
                         draggable:false,
                         animation: google.maps.Animation.DROP,
-                        icon: '<%= asset_path 'marker1.png' %>'.replace('1', (indexMarker - (nbMarkers * Math.floor(indexMarker / nbMarkers))).toString()),
+                        icon: '<%= asset_path 'marker1.png' %>'.replace('marker1', 'marker' + (indexMarker - (nbMarkers * Math.floor(indexMarker / nbMarkers)))),
                         position: loc
                     }),
                     localisation: loc,
