@@ -66,3 +66,66 @@ $blue: #009EE3;
         width: 80%;
     }
 }
+
+.new_event {
+    width: 80%;
+    margin: 50px auto 0;
+
+    .field {
+        margin: 10px 0;
+    }
+
+    label {
+        display: inline-block;
+        vertical-align: top;
+        width: 30%;
+        color: #009EE3;
+    }
+
+    input {
+        &[type="number"] {
+            width: 50px;
+        }
+    }
+
+
+    input[type="text"], input[type="number"], select {
+        border-radius: 20px / 13px;
+        border: 1px solid #CCC;
+        padding: 2px 5px
+    }
+
+    .transition {
+        font-size: 12px;
+        font-weight: bold;
+        padding-bottom: 5px;
+        margin-top: 30px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #009EE3;
+
+        & + .field {
+            background: #E9E9E9;
+            padding: 10px 20px;
+
+            img, textarea {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            img {
+                width: 50px;
+                border: 2px solid white;
+                box-shadow: 0 0 4px #093F8C;
+                border-radius: 100%;
+            }
+
+            textarea {
+                min-height:60px;
+                background: #F9F9F9;
+                border: none;
+                margin-left: 10px;
+                width: calc(100% - 75px)
+            }
+        }
+    }
+}

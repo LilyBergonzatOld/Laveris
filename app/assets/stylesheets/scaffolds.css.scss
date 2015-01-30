@@ -72,8 +72,13 @@ img {
     max-width: 100%;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .btn {
-    width: 70%;
+    width: 75%;
     margin: 0 auto;
     display: block;
     text-align: center;
@@ -83,12 +88,17 @@ img {
     padding: 10px;
     text-transform: uppercase;
     color: white;
+    border: none;
     font-family: 'bebas_regular', Arial, sans-serif;
     font-size: 25px;
     letter-spacing: 2px;
 
     &.btn-action {
         background: #009EE3;
+    }
+
+    &.btn-valid {
+        background: #83C341;
     }
 }
 
@@ -103,6 +113,7 @@ img {
     border-radius: 5px;
     color: white;
     line-height: 25px;
+    z-index: 9;
 
     &:before {
         content: '';
@@ -127,6 +138,10 @@ img {
 
 .index .alert {
     margin: 115px auto 0;
+}
+
+.mt {
+    margin-top: 150px;
 }
 
 nav {
@@ -207,7 +222,7 @@ body:not(.index) header {
 }
 
 h1:not(.index) {
-    font-family:'Bebas Neue', Arial, sans-serif;
+    font-family:'bebas_regular', Arial, sans-serif;
     display: inline-block;
     font-size:18px;
     color:white;
@@ -239,7 +254,7 @@ h1:not(.index) {
 
 h2 {
     display:inline-block;
-    font-family: 'Bebas Neue', Arial, sans-serif;
+    font-family: 'bebas_regular', Arial, sans-serif;
     font-size: 22px;
     color: white;
     text-transform: uppercase;
@@ -273,16 +288,20 @@ body:not(.index) .container {
 
 /*Données laveries*/
 
-.distance {
+.icon {
     width:20px;
 }
 
-.adresse {
+.icon {
     width:20px;
 }
 
-.capacite {
+.icon {
     width:20px;
+
+    &.jump {
+        margin-top: 7px;
+    }
 }
 
 .laundromatFieldTitles, .laundromatFieldValues {

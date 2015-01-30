@@ -1,39 +1,52 @@
-<p id="notice"><%= notice %></p>
+<div class="titre-laveries mt">
+    <section>
+        <h2 id="laundromatName">
+            <%= @laundromat.name %>
+        </h2>
+        <div id="etoiles">
+            <%= image_tag("etoile.png", :class => "etoile", :alt => "*", :title => "etoile") %>
+            <%= image_tag("etoile.png", :class => "etoile", :alt => "*", :title => "etoile") %>
+            <%= image_tag("etoile-vide.png", :class => "etoile", :alt => "-", :title => "etoile") %>
+            <%= image_tag("etoile-vide.png", :class => "etoile", :alt => "-", :title => "etoile") %>
+            <%= image_tag("etoile-vide.png", :class => "etoile", :alt => "-", :title => "etoile") %>
+        </div>
+    </section>
+</div>
+<section id="laundromats">
+    <ul>
+        <li>
+            <%= image_tag("distance.png", :class => "distance", :alt => "distance", :title => "distance") %>
+        </li>
+        <li>
+            <%= image_tag("adresse.png", :class => "adresse", :alt => "adresse", :title => "adresse") %>
+        </li>
+        <li>
+            <%= image_tag("capacite.png", :class => "capacite", :alt => "capacite", :title => "capacite") %>
+        </li>
+    </ul>
+    <ul class="laundromatFieldTitles">
+        <li>
+            Distance
+        </li>
+        <li>
+            Adresse
+        </li>
+        <li>
+            Capacité
+        </li>
+    </ul>
+    <ul class="laundromatFieldValues">
+        <li id="laundromatDistance">
+            316 mètres
+        </li>
+        <li id="laundromatAddress">
+            <%= @laundromat.nbstreet %> <%= @laundromat.libstreet %><br />
+            <%= @laundromat.zipcode %> <%= @laundromat.libcity %>
+        </li>
+        <li id="laundromatCapacity">
+            <%= @laundromat.capacity %> personne(s)
+        </li>
+    </ul>
+</section>
 
-<p>
-  <strong>Nom : </strong>
-  <%= @laundromat.name %>
-</p>
-
-<p>
-  <strong>Capacité : </strong>
-  <%= @laundromat.capacity %>
-</p>
-
-<p>
-  <strong>N° de téléphone : </strong>
-  <%= @laundromat.phone %>
-</p>
-
-<p>
-  <strong>N° de rue : </strong>
-  <%= @laundromat.nbstreet %>
-</p>
-
-<p>
-  <strong>Rue : </strong>
-  <%= @laundromat.libstreet %>
-</p>
-
-<p>
-  <strong>Code postal : </strong>
-  <%= @laundromat.zipcode %>
-</p>
-
-<p>
-  <strong>Ville : </strong>
-  <%= @laundromat.libcity %>
-</p>
-
-<%= link_to 'Retour', laundromats_path, class: 'btn btn-default' %>
-<%= link_to 'Modifier', edit_laundromat_path(@laundromat), class: 'btn btn-default' %>
+<%= link_to "Créer un événement dans cette laverie", new_event_path, :class => "btn btn-action" %>

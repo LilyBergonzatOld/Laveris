@@ -1,3 +1,5 @@
-<h1>Nouvel événement</h1>
+<% back_arrow link_to "#{image_tag('retour.png', :class => 'fleche')} Retour".html_safe(), "events_path", :class => "retour" %>
+<% title "Créer" %>
+<% himage image_tag("evenements.png", :class => "laveries", :alt => "laveries", :title => "laveries") %>
 
 <%= render 'form' %>

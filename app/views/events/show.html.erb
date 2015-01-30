@@ -1,20 +1,76 @@
-<p id="notice"><%= notice %></p>
+<% back_arrow link_to "#{image_tag('retour.png', :class => 'fleche')} Retour".html_safe(), "events_path", :class => "retour" %>
+<% title "Fiche" %>
+<% himage image_tag("evenements.png", :class => "laveries", :alt => "laveries", :title => "laveries") %>
 
-<p>
-  <strong>Quand ? </strong>
-  <%= @event.date %>
-</p>
+<div class="titre-laveries mt">
+    <section>
+        <h2 id="laundromatName">
+            <%= @event.name %>
+        </h2>
+    </section>
+</div>
+<section id="laundromats">
+    <ul>
+        <li>
+            <%= image_tag("distance.png", :class => "icon", :alt => "distance", :title => "distance") %>
+        </li>
+        <li>
+            <%= image_tag("adresse.png", :class => "icon", :alt => "adresse", :title => "adresse") %>
+        </li>
+        <li>
+            <%= image_tag("capacite.png", :class => "icon", :alt => "capacite", :title => "capacite") %>
+        </li>
+        <li>
+            <%= image_tag("places.png", :class => "icon jump", :alt => "places", :title => "places") %>
+        </li>
+        <li>
+            <%= image_tag("date.png", :class => "icon jump", :alt => "date", :title => "date") %>
+        </li>
+        <li>
+            <%= image_tag("heure.png", :class => "icon jump", :alt => "heure", :title => "heure") %>
+        </li>
+    </ul>
+    <ul class="laundromatFieldTitles">
+        <li>
+            Laverie
+        </li>
+        <li>
+            Adresse
+        </li>
+        <li>
+            Capacité
+        </li>
+        <li>
+            Places
+        </li>
+        <li>
+            Date
+        </li>
+        <li>
+            Heure
+        </li>
+    </ul>
+    <ul class="laundromatFieldValues">
+        <li id="laundromatDistance">
+            <%= @event.laundromat.read_attribute(:name) %>
+        </li>
+        <li id="laundromatAddress">
+            <%= @event.laundromat.read_attribute(:nbstreet) %> <%= @event.laundromat.read_attribute(:libstreet) %><br />
+            <%= @event.laundromat.read_attribute(:zipcode) %> <%= @event.laundromat.read_attribute(:libcity) %>
+        </li>
+        <li id="laundromatCapacity">
+            <%= @event.laundromat.read_attribute(:capacity) %> personne(s)
+        </li>
+        <li id="laundromatCapacity">
+            2 personne(s)
+        </li>
+        <li id="laundromatCapacity">
+            <%= @event.date.strftime("%d/%m/%Y") %>
+        </li>
+        <li id="laundromatCapacity">
+            <%= @event.date.strftime("%HH%M") %>
+        </li>
+    </ul>
+</section>
 
-<p>
-  <strong>Qui ? </strong>
-  <%= @event.user.read_attribute(:name) + ' ' + @event.user.read_attribute(:surname) %>
-</p>
-
-<p>
-  <strong>Où ? </strong>
-  <%= @event.laundromat.read_attribute(:name) %>
-</p>
-
-<%= link_to 'Retour', events_path %>
-<%= link_to 'Modifier', edit_event_path(@event) %>
-<%= link_to 'Supprimer', event, method: :delete, data: {confirm: 'Are you sure?' } %>
+<%= link_to "Participer", new_event_path, :class => "btn btn-action" %>

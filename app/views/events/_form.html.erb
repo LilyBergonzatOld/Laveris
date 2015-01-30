@@ -12,26 +12,35 @@
     <% end %>
 
     <div class="field form-group">
-        <%= f.label :name %><br>
+        <%= f.label :laundromat_id, "Laverie" %>
+        <%= f.select :laundromat_id, @laundromats.collect { |i| [i.name, i.id] }, {include_blank: '--'} %>
+    </div>
+
+    <div class="field form-group">
+        <%= f.label :name, "Événement" %>
         <%= f.text_field :name %>
     </div>
 
     <div class="field form-group">
-        <%= f.label :message %><br>
-        <%= f.text_field :message %>
+        <%= f.label :date, "Date" %>
+        <%= f.date_select :date %>
     </div>
 
     <div class="field form-group">
-        <%= f.label :date %><br>
-        <%= f.datetime_select :date %>
+        <%= f.label :date, "Heure" %>
+        <%= f.time_select :date, :ignore_date => true %>
     </div>
+
+    <p class="transition">
+        Voulez-vous ajouter un petit mot ?
+    </p>
+
     <div class="field form-group">
-        <%= f.label :laundromat_id %><br>
-        <%= f.select :laundromat_id, @laundromats.collect { |i| [i.name, i.id] }, {include_blank: '--'} %>
+        <%= image_tag(@avatar) %>
+        <%= f.text_area :message %>
     </div>
+
     <%= f.hidden_field :user_id, :value => session[:id] %>
-    <div class="actions">
-        <%= link_to 'Retour', root_path, class: 'btn btn-default' %>
-        <%= f.submit 'Enregistrer', class: 'btn btn-default' %>
-    </div>
+
+    <%= f.submit 'Créer cet événement', class: 'btn btn-valid' %>
 <% end %>

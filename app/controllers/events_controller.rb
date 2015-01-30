@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    flash.now[:notice] = @event.message
   end
 
   # GET /events/new
@@ -17,6 +18,8 @@ class EventsController < ApplicationController
     @event = Event.new
     @users = User.all
     @laundromats = Laundromat.all
+    me = @users.select { |user| user.id == session[:id] }
+    @avatar = me[0].avatar
   end
 
   # GET /events/1/edit

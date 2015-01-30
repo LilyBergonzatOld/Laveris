@@ -28,7 +28,7 @@ class LaundromatsController < ApplicationController
 
     respond_to do |format|
       if @laundromat.save
-        format.html { redirect_to @laundromat, notice: 'La laverie a été créée avec succès' }
+        format.html { redirect_to @laundromat, notice: 'La laverie a bien été ajoutée. Merci de ta collaboration !' }
         format.json { render :show, status: :created, location: @laundromat }
       else
         format.html { render :new }

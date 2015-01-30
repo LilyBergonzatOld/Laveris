@@ -22,3 +22,31 @@ html, body, body:not(.index) .container, #map-canvas {
     z-index: 3;
     width: 50px;
 }
+
+.new_laundromat {
+    width: 80%;
+    margin: 50px auto 0;
+
+    .field {
+        margin: 10px 0;
+    }
+
+    label {
+        display: inline-block;
+        vertical-align: top;
+        width: 35%;
+        color: #009EE3;
+    }
+
+    input {
+        &[type="text"], &[type="number"] {
+            border-radius: 20px / 13px;
+            border: 1px solid #CCC;
+            padding: 2px 5px
+        }
+
+        &[type="number"] {
+            width: 50px;
+        }
+    }
+}
