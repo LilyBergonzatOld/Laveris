@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
   # GET /profile
   def profile
-    if defined?session[:id]
+    if session[:id]
       @user = User.find(session[:id])
     else
       redirect_to root_path, notice: 'Vous n\'êtes pas connecté'
