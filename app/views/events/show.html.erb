@@ -73,4 +73,8 @@
     </ul>
 </section>
 
-<%= link_to "Participer", new_event_path, :class => "btn btn-action" %>
+<% if @subscribed %>
+    <%= link_to "Inscrit !", subscribe_path(@event), :class => "btn btn-action" %>
+<% else %>
+    <%= link_to "Participer", subscribe_path(@event), :class => "btn btn-action" %>
+<% end %>

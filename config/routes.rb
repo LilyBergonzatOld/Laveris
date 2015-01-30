@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get 'logout', to: 'users#logout', as: :logout
   get 'profile', to: 'users#profile', as: :profile
   get 'parameters', to: 'users#parameters', as: :parameters
+  get 'events/:id/subscribe', to: 'events#subscribe', as: :subscribe
 end
