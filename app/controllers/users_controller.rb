@@ -4,6 +4,9 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    if session[:id]
+      redirect_to laundromats_path
+    end
   end
 
   # GET /parameters
