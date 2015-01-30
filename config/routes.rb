@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#profile', as: :profile
   get 'parameters', to: 'users#parameters', as: :parameters
   get 'events/:id/subscribe', to: 'events#subscribe', as: :subscribe
+  get 'events/:id/unsubscribe', to: 'events#unsubscribe', as: :unsubscribe
 end

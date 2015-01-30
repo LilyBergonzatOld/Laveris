@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    @uid = session[:id]
   end
 
   # GET /events/1
@@ -24,6 +25,24 @@ class EventsController < ApplicationController
       me.save
 
       event.subscribed_users.push(me)
+      event.save
+
+      redirect_to event
+    else
+      redirect_to root_path, notice: 'Vous n\'êtes pas connecté'
+    end
+  end
+
+  # GET /events/1/unsubscribe
+  def unsubscribe
+    if session[:id]
+      me = User.find(session[:id])
+      event = Event.find(params[:id])
+
+      me.subscribed_events.delete(event)
+      me.save
+
+      event.subscribed_users.delete(me)
       event.save
 
       redirect_to event

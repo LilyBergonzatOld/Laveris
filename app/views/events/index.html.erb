@@ -14,7 +14,11 @@
                     <% end %>
                 </th>
                 <th>
-                    <%= image_tag("check-gris.png") %>
+                    <% if User.find(@uid).subscribed_events.include?(Event.find(event.id)) %>
+                        <%= image_tag("check-vert.png") %>
+                    <% else %>
+                        <%= image_tag("check-gris.png") %>
+                    <% end %>
                 </th>
             </tr>
             <tr>
