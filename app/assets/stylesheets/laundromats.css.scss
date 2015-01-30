@@ -7,6 +7,10 @@ html, body, body:not(.index) .container, #map-canvas {
     width: 100%;
 }
 
+#laundromats {
+    white-space: nowrap;
+}
+
 #map-canvas {
     height: 60%;
 }

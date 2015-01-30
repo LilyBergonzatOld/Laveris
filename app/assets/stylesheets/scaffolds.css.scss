@@ -1,3 +1,68 @@
+@font-face {
+    font-family: 'bebas_thin';
+    src: font-url('bebasneue_thin.eot');
+    src: font-url('bebasneue_thin.eot?#iefix') format('embedded-opentype'),
+    font-url('bebasneue_thin.woff2') format('woff2'),
+    font-url('bebasneue_thin.woff') format('woff'),
+    font-url('bebasneue_thin.ttf') format('truetype'),
+    font-url('bebasneue_thin.svg#bebas_neuethin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_regular';
+    src: font-url('bebasneue_regular.eot');
+    src: font-url('bebasneue_regular.eot?#iefix') format('embedded-opentype'),
+    font-url('bebasneue_regular.woff2') format('woff2'),
+    font-url('bebasneue_regular.woff') format('woff'),
+    font-url('bebasneue_regular.ttf') format('truetype'),
+    font-url('bebasneue_regular.svg#bebas_neue_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_bold';
+    src: font-url('bebasneue_bold.eot');
+    src: font-url('bebasneue_bold.eot?#iefix') format('embedded-opentype'),
+    font-url('bebasneue_bold.woff2') format('woff2'),
+    font-url('bebasneue_bold.woff') format('woff'),
+    font-url('bebasneue_bold.ttf') format('truetype'),
+    font-url('bebasneue_bold.svg#bebas_neuebold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_light';
+    src: font-url('bebasneue_light.eot');
+    src: font-url('bebasneue_light.eot?#iefix') format('embedded-opentype'),
+    font-url('bebasneue_light.woff2') format('woff2'),
+    font-url('bebasneue_light.woff') format('woff'),
+    font-url('bebasneue_light.ttf') format('truetype'),
+    font-url('bebasneue_light.svg#bebas_neuelight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'bebas_book';
+    src: font-url('bebasneue_book.eot');
+    src: font-url('bebasneue_book.eot?#iefix') format('embedded-opentype'),
+    font-url('bebasneue_book.woff2') format('woff2'),
+    font-url('bebasneue_book.woff') format('woff'),
+    font-url('bebasneue_book.ttf') format('truetype'),
+    font-url('bebasneue_book.svg#bebas_neuebook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
     font-family:'Interstate Regular*', Arial, sans-serif;
     margin: 0;
@@ -5,6 +70,59 @@ body {
 
 img {
     max-width: 100%;
+}
+
+.btn {
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 1px 1px black;
+    padding: 10px;
+    text-transform: uppercase;
+    color: white;
+    font-family: 'bebas_regular', Arial, sans-serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+
+    &.btn-action {
+        background: #009EE3;
+    }
+}
+
+.alert {
+    display: block;
+    width: 80%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 50px auto 0;
+    position: absolute;
+    left: 10%;
+    border-radius: 5px;
+    color: white;
+    line-height: 25px;
+
+    &:before {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 15px 20px 15px;
+        display: block;
+        position: absolute;
+        top: -20px;
+        right: 30px;
+    }
+
+    &.alert-success {
+        background: #94CB5C;
+
+        &:before {
+            border-color: transparent transparent #94CB5C transparent;
+        }
+    }
 }
 
 nav {
@@ -72,7 +190,6 @@ nav {
     font-size: 12px;
     background-color: #009EE3;
     width: 39px;
-    margin-top: 2px;
 }
 
 body:not(.index) header {

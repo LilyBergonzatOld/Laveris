@@ -1,0 +1,28 @@
+<% title "Profil" %>
+<% himage image_tag("profil.png", :class => "laveries", :alt => "laveries", :title => "laveries") %>
+
+<p id="photo-profil">
+    <%= image_tag(@user.avatar) %>
+</p>
+
+<p>
+    <strong>Prénom</strong>
+    <%= @user.name %>
+</p>
+
+<p>
+    <strong>Nom</strong>
+    <%= @user.surname %>
+</p>
+
+<p>
+    <strong>N° de téléphone</strong>
+    <%= @user.phone %>
+</p>
+
+<p>
+    <strong>Location</strong>
+    <%= @user.location %>
+</p>
+
+<%= link_to 'Modifier mon profil', edit_user_path(@user), class: 'btn btn-action' %>

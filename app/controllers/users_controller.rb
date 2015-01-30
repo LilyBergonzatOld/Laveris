@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /parameters
   def parameters
+    flash.now[:notice] = "Les fonctionnalités de cette page seront bientôt disponibles !"
   end
 
   def callback
