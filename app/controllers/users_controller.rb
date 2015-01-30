@@ -12,34 +12,32 @@ class UsersController < ApplicationController
   end
 
   def callback
-    redirect_to laundromats_path
-  end
+    facebook_user = User.koala(request.env['omniauth.auth']['credentials'])
+    full_name_array = facebook_user['name'].split(/ /)
+    full_name = facebook_user['name']
+    name = full_name_array[0]
+    full_name_array.shift
+    surname = full_name_array.join(' ')
 
-  def login
-    @facebook_user = User.koala(request.env['omniauth.auth']['credentials'])
-    @full_name_array = @facebook_user['name'].split(/ /)
-    @full_name = @facebook_user['name']
-    @name = @full_name_array[0]
-    @full_name_array.shift
-    @surname = @full_name_array.join(' ')
-
-    if User.exists?(:fbid => @facebook_user['id'])
-      @user = User.find_by_fbid(@facebook_user['id'])
+    if User.exists?(:fbid => facebook_user['id'])
+      user = User.find_by_fbid(facebook_user['id'])
     else
-      @user = User.new
-      @user[:fbid] = @facebook_user['id']
-      @user[:name] = @name
-      @user[:surname] = @surname
-      @user[:avatar] = @facebook_user['picture']['data']['url'].to_s
-      @user.save
+      user = User.new
+      user[:fbid] = facebook_user['id']
+      user[:name] = name
+      user[:surname] = surname
+      user[:avatar] = facebook_user['picture']['data']['url'].to_s
+      user.save
     end
 
-    session[:id] = @user[:id]
-    session[:fbid] = @user[:fbid]
-    session[:name] = @user[:name]
-    session[:surname] = @user[:surname]
+    puts YAML::dump(facebook_user)
 
-    redirect_to root_path, notice: 'Bienvenue ' + @facebook_user['name']
+    session[:id] = user[:id]
+    session[:fbid] = user[:fbid]
+    session[:name] = user[:name]
+    session[:surname] = user[:surname]
+
+    redirect_to laundromats_path, notice: 'Bienvenue ' + session[:name]
   end
 
   # GET /logout
